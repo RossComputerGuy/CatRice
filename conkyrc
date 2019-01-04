@@ -1,0 +1,51 @@
+conky.config = {
+	use_xft = true,
+	update_interval = 1,
+	own_window = true,
+	own_window_type = "override",
+	own_window_transparent = false,
+	own_window_hints = "undecorated,sticky,below,skip_taskbar,skip_pager",
+	own_window_argb_visual = true,
+	own_window_argb_value = 0,
+	own_window_colour = "000a12",
+	background = true,
+	double_buffer = true,
+	draw_shades = false,
+	draw_outline = false,
+	draw_borders = false,
+	draw_graph_borders = false,
+	alignment = "top_left",
+	minimum_width = 270,
+	maximum_width = 270,
+	minimum_height = 10,
+	gap_x = 10,
+	gap_y = 40,
+	font = "DejaVuSansMono:size=10",
+	default_color = "dfdfdf",
+	out_to_console = false,
+	out_to_stderr = false
+};
+
+conky.text = [[
+${alignr}${font DejaVuSansMono:pixelsize=20:weight=bold}System${font}
+${hr 1}
+${scroll 27 $nodename - $sysname $kernel on $machine | }
+Uptime: ${uptime %H:%M:%S}
+RAM: ${membar 10,210}
+Swap: ${swapbar 10,200}
+Entropy: ${entropy_bar 10,170}
+Battery: ${battery_bar 10,170}
+
+${voffset 5}
+${alignr}${font DejaVuSansMono:pixelsize=20:weight=bold}Disks${font}
+Mount${alignc}Free${alignr}Temp
+${hr 1}
+/${alignc}${fs_free_perc /}%${alignr}${hddtemp /dev/sda}°
+
+${voffset 5}
+${alignr}${font DejaVuSansMono:pixelsize=20:weight=bold}Network${font}
+Device${alignc}Upload${alignr}Download
+${hr 1}
+eno0${alignc}${upspeed eno0}${alignr}${downspeed eno0}
+wlp3s0${alignc}${upspeed wlp3s0}${alignr}${downspeed wlp3s0}
+]]
